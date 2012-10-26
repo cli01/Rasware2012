@@ -11,6 +11,7 @@
 
 void initLineSensor(void) {
 	InitializeLineSensor();
+	SetDischargeTime(2003);
 }
 
 void lineSensorDemo(void) {
