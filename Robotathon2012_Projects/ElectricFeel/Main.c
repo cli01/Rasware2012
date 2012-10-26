@@ -4,52 +4,27 @@
 #include "driverlib/uart.h"		// input/output over UART
 #include "RASLib/init.h"
 
+
+
 int main(void)
 {	
-	char ch;	  	 
+	char right = 0, left = 0;
+	unsigned char lineByte = 0;
+	int lineSensorArray[8];
+	int i; 	  	 
 	LockoutProtection();
 	InitializeMCU();
-	initUART();																							    
+	initUART();
 	
-	while(1) {	
-		UARTprintf("\nRAS Demo for Robotathon 2012\n");
-		UARTprintf("  0=UART Demo\n  1=Motor Demo\n");
-		UARTprintf("  2=Servo Demo\n  3=Line Sensor\n");
-		UARTprintf("  4=IR Sensor Demo\n  5=Encoders Demo\n");
-		
-		UARTprintf(">> ");
-		ch = getc();
-		putc(ch);
-		UARTprintf("\n");
-
-		if (ch == '0') {
-			UARTprintf("\nUART Demo\n");
-			uartDemo();	 
-		}
-		else if (ch == '1') {
-			UARTprintf("\nMotor Demo\n");
-			initMotors();
-			motorDemo(); 
-		}
-		else if (ch == '2') {
-			UARTprintf("\nServo Demo\n");
-			initServo();
-			servoDemo();   
-		}
-		else if (ch == '3') {			   
-			UARTprintf("\nLine Sensor Demo\n");
-			initLineSensor();		  
-			lineSensorDemo();
-		}
-		else if (ch == '4') {	   
-			UARTprintf("\nIR Sensor Demo\n");
-			initIRSensor();
-			IRSensorDemo();	 
-		}
-		else if (ch == '5') {
-			UARTprintf("\nEncoders Demo\n");
-			initEncoders();
-			encoderDemo();
-		}
+	InitializeMotors(false, false);
+	InitializeLineSensor();
+	SetDischargeTime(/*Insert Here*/);
+	
+	while(1) {
+	lineByte = 	ReadLineSensor();
+	
+	for(i = 0; i < 8; i++) {
+		lineSensorArray[i] = lineSensorByte & 0x01;
+		lineSensorByte = lineSensorByte >> 1;
 	}
 }
