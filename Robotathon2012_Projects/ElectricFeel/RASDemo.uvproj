@@ -456,6 +456,16 @@
               <FileType>1</FileType>
               <FilePath>.\UARTDemo.c</FilePath>
             </File>
+            <File>
+              <FileName>LineFollower.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\LineFollower.c</FilePath>
+            </File>
+            <File>
+              <FileName>DeadReckoning.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DeadReckoning.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
