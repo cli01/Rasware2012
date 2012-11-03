@@ -16,10 +16,10 @@ int main(void)
 	InitializeMotors(false, true);
 	InitializeEncoders(false, true);
 	InitializeLineSensor();
-	SetDischargeTime(240);
-	SetMotorPowers(60, 60);
+	SetDischargeTime(350);
+	SetMotorPowers(80, 80);
 
-	DeadReckoning();
-	//LineFollower();
+	//DeadReckoning();
+	LineFollower();
 }
 	
