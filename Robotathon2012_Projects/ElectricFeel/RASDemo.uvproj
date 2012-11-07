@@ -466,7 +466,20 @@
               <FileType>1</FileType>
               <FilePath>.\DeadReckoning.c</FilePath>
             </File>
+            <File>
+              <FileName>WallFollower.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\WallFollower.c</FilePath>
+            </File>
+            <File>
+              <FileName>FigureEight.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FigureEight.c</FilePath>
+            </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>New Group</GroupName>
         </Group>
       </Groups>
     </Target>

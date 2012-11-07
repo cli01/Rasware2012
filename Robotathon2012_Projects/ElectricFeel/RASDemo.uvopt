@@ -203,10 +203,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>3</ColumnNumber>
+      <ColumnNumber>31</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>4</TopLine>
-      <CurrentLine>21</CurrentLine>
+      <TopLine>13</TopLine>
+      <CurrentLine>17</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Main.c</PathWithFileName>
       <FilenameWithoutPath>Main.c</FilenameWithoutPath>
@@ -317,7 +317,7 @@
       <Focus>0</Focus>
       <ColumnNumber>2</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>15</TopLine>
+      <TopLine>16</TopLine>
       <CurrentLine>24</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LineSensorDemo.c</PathWithFileName>
@@ -388,11 +388,46 @@
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>16</CurrentLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\DeadReckoning.c</PathWithFileName>
       <FilenameWithoutPath>DeadReckoning.c</FilenameWithoutPath>
     </File>
+    <File>
+      <GroupNumber>3</GroupNumber>
+      <FileNumber>0</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>23</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>64</TopLine>
+      <CurrentLine>76</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\WallFollower.c</PathWithFileName>
+      <FilenameWithoutPath>WallFollower.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>3</GroupNumber>
+      <FileNumber>0</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>29</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>16</TopLine>
+      <CurrentLine>25</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\FigureEight.c</PathWithFileName>
+      <FilenameWithoutPath>FigureEight.c</FilenameWithoutPath>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>New Group</GroupName>
+    <tvExp>0</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
   </Group>
 
   <AlienFiles>
@@ -429,10 +464,28 @@
       <ActiveTab>1</ActiveTab>
       <Documents>
         <Doc>
+          <Name>.\DeadReckoning.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>1</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\FigureEight.c</Name>
+          <ColumnNumber>29</ColumnNumber>
+          <TopLine>16</TopLine>
+          <CurrentLine>25</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\WallFollower.c</Name>
+          <ColumnNumber>23</ColumnNumber>
+          <TopLine>64</TopLine>
+          <CurrentLine>76</CurrentLine>
+        </Doc>
+        <Doc>
           <Name>.\Main.c</Name>
-          <ColumnNumber>3</ColumnNumber>
-          <TopLine>4</TopLine>
-          <CurrentLine>21</CurrentLine>
+          <ColumnNumber>31</ColumnNumber>
+          <TopLine>13</TopLine>
+          <CurrentLine>17</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\LineFollower.c</Name>
@@ -441,15 +494,9 @@
           <CurrentLine>28</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\DeadReckoning.c</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>16</CurrentLine>
-        </Doc>
-        <Doc>
           <Name>.\LineSensorDemo.c</Name>
           <ColumnNumber>2</ColumnNumber>
-          <TopLine>15</TopLine>
+          <TopLine>16</TopLine>
           <CurrentLine>24</CurrentLine>
         </Doc>
         <Doc>

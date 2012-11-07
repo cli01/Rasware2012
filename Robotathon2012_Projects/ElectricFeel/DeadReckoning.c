@@ -28,7 +28,6 @@ void DeadReckoning (void) {
 	encoder0Limit += 200000;
 	while(encoder0 < encoder0Limit) {
 		GetEncoderCounts(&encoder0, &encoder1);
-		//UARTprintf("%d    %d\n", encoder0, encoder1);
 	}
 	
 	//PresetEncoderCount(ENCODER_0, 0);

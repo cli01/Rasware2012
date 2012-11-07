@@ -20,6 +20,9 @@ int main(void)
 	SetMotorPowers(80, 80);
 
 	//DeadReckoning();
-	LineFollower();
+	//LineFollower();
+	//WallFollower();
+
+	FigureEight();
 }
 	
