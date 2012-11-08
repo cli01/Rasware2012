@@ -476,6 +476,16 @@
               <FileType>1</FileType>
               <FilePath>.\FigureEight.c</FilePath>
             </File>
+            <File>
+              <FileName>SquareDance.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SquareDance.c</FilePath>
+            </File>
+            <File>
+              <FileName>ObjectFinder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ObjectFinder.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

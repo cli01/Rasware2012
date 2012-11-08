@@ -1,33 +1,31 @@
 
 void LineFollower (void) {
-		signed char right = 10, left = 10;	
-		int lsArray[8];
-		unsigned char lsByte;	
+		signed char right = 10, left = 10;	//Motor values	
+		int lsArray[8];						//Array of line sensor inputs
 
 
 		while(1) {
 		int sum = 0;
-		int lsArray[8];
-		unsigned char lsByte = ReadLineSensor();
+		unsigned char lsByte = ReadLineSensor();	//Read from linesensor
 		unsigned char temp;
 		int i;
-		int k;
-		int l;
-		int count;
+		int k;\
 		int j = -3;
 		
 		for(i = 0; i < 8; i++) {
-		 	temp = ~lsByte;
-			lsArray[i] = (temp & 0x01);
-			lsArray[i] = j * lsArray[i];
-			lsByte = lsByte >> 1;
-			if (i != 3) {j++;}
+		 	temp = ~lsByte;				//Invert the input for negative logic
+			lsArray[i] = (temp & 0x01);	//Get the last bit
+			lsArray[i] = j * lsArray[i];//Multiply by the input by weight
+			lsByte = lsByte >> 1;		//Shift to isolate the last bit for next loop
+			if (i != 3) {j++;}			//Calibrate the weight
+										//Weight: (-3, -2, -1, 0, 0, 1, 2, 3)
 		}
 		
 		for(k = 0; k < 8; k++) {
-			sum += lsArray[k];
+			sum += lsArray[k];			//Add the sum of the weights
 		}
 		
+		//Caliberate the motor powers accordingly with the weights
 		if (sum < 0) {
 			left = 70 - sum * 7;
 			right = 30 + sum * 3;
@@ -43,16 +41,7 @@ void LineFollower (void) {
 			right = 70;
 		}
 		
+		//Set the motor to appropriate power
 		SetMotorPowers(right, left);
-		
-		if (count % 100 == 0) {
-			for(l = 0; l < 8; l++) {
-				UARTprintf("%d", lsArray[l]);
-			}
-			UARTprintf("    ");
-			UARTprintf("%d\n", sum);
-		}
-		
-		count++;
 	}
 }

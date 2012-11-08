@@ -7,22 +7,24 @@
 
 
 int main(void)
-{		  	 
+{	
+	//Initialize the microcontroller	  	 
 	LockoutProtection();
 	InitializeMCU();
 	initUART();
 	UARTprintf("Hello\n");
 	
+	//Initialize the hardwares
 	InitializeMotors(false, true);
 	InitializeEncoders(false, true);
 	InitializeLineSensor();
 	SetDischargeTime(350);
-	SetMotorPowers(80, 80);
 
 	//DeadReckoning();
 	//LineFollower();
 	//WallFollower();
-
-	FigureEight();
+	//FigureEight();
+	//SquareDance();
+	ObjectFinder();
 }
 	

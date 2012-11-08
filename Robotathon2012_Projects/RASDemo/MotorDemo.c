@@ -17,7 +17,7 @@ void motorDemo(void) {
 	UARTprintf("d-right\n  space-stop\n  enter-quit\n");
 	
 	{
-		// values should range between -128 and 127?
+		//values should range between -128 and 127?
 		signed char left = 0, right = 0, maxSpeed = 127;
 		char newline = 13;
 		char ch = getc();

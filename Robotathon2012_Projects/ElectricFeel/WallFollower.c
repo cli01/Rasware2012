@@ -11,38 +11,28 @@
 
 #include "RASDemo.h"
 
-void InitAdcPorts(void) {
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC);
-	ADCSequenceConfigure(ADC_BASE,0, ADC_TRIGGER_PROCESSOR, 0);
-	ADCSequenceStepConfigure(ADC_BASE, 0, 0, ADC_CTL_CH0);
-	ADCSequenceStepConfigure(ADC_BASE, 0, 1, ADC_CTL_CH1);
-	ADCSequenceStepConfigure(ADC_BASE, 0, 2, ADC_CTL_CH2);
-	ADCSequenceStepConfigure(ADC_BASE, 0, 3, ADC_CTL_CH3 | ADC_CTL_IE | ADC_CTL_END);
-	ADCSequenceEnable(ADC_BASE, 0);
-}
-
-long sampleAdcPort(int port) {
-	unsigned long ADCValues[4] = {0};
-	ADCProcessorTrigger(ADC_BASE, 0 ); 
-	while(!ADCIntStatus(ADC_BASE, 0, false)); 
-	ADCSequenceDataGet(ADC_BASE, 0, ADCValues);
-	ADCIntClear(ADC_BASE, 0);
-	return ADCValues[port];
-}
-
-long convertAdc(long x){
-	return (((6000*1000) / x) - 6000)/100;
-}
-
-//long medianFilter(long* x){
-//	if(x[0] < x[1]) {
-//		if(x[2] < x[0]) {return x[0];}
-//	}
-//	if(x[1] < x[2]) {
-//		if(x[0] < x[1]) {return x[1];}
-//	}
-//	if(x[2] < x[1]) {
-//		if(x[0] < x[2]) {return x[
+//void InitAdcPorts(void) {
+//	SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC);
+//	ADCSequenceConfigure(ADC_BASE,0, ADC_TRIGGER_PROCESSOR, 0);
+//	ADCSequenceStepConfigure(ADC_BASE, 0, 0, ADC_CTL_CH0);
+//	ADCSequenceStepConfigure(ADC_BASE, 0, 1, ADC_CTL_CH1);
+//	ADCSequenceStepConfigure(ADC_BASE, 0, 2, ADC_CTL_CH2);
+//	ADCSequenceStepConfigure(ADC_BASE, 0, 3, ADC_CTL_CH3 | ADC_CTL_IE | ADC_CTL_END);
+//	ADCSequenceEnable(ADC_BASE, 0);
+//}
+//
+//long sampleAdcPort(int port) {
+//	unsigned long ADCValues[4] = {0};
+//	ADCProcessorTrigger(ADC_BASE, 0 ); 
+//	while(!ADCIntStatus(ADC_BASE, 0, false)); 
+//	ADCSequenceDataGet(ADC_BASE, 0, ADCValues);
+//	ADCIntClear(ADC_BASE, 0);
+//	return ADCValues[port];
+//}
+//
+//long convertAdc(long x){
+//	return (((6000*1000) / x) - 6000)/100;
+//}
 
 void WallFollower(void) {
 	long encoder0Limit = 0;
@@ -58,34 +48,33 @@ void WallFollower(void) {
 	InitAdcPorts();
 
 	while(1) {
+		//Sample ADC ports and convert accordingly
 		adcSample1 = sampleAdcPort(0);
 		distance1 = convertAdc(adcSample1);
 		adcSample2 = sampleAdcPort(2);
 		distance2 = convertAdc(adcSample2);
-		GetEncoderCounts(&encoder0, &encoder1);
 
+		GetEncoderCounts(&encoder0, &encoder1);	//Update encoder values
 
-		if(distance1 > 120) {
-			if(distance1 > 300) {
-				SetMotorPowers(120, 60);
-				encoder0Limit += 160000;
-				while(encoder0 < encoder0Limit) {
-					GetEncoderCounts(&encoder0, &encoder1);
-				}
+		if(distance1 > 300) {			//If the side of the robot is very far from the wall, make a sharp turn
+			SetMotorPowers(120, 60);
+			encoder0Limit += 16000;
+			while(encoder0 < encoder0Limit) {
+				GetEncoderCounts(&encoder0, &encoder1);
 			}
+		} else if(distance1 > 120) {	//If the robot is veering away from the wall, slightly turn toward the wall
 			SetMotorPowers(70, 30);
-		} else if(distance1 < 40) {
+		} else if(distance1 < 40) {		//If the robot is too close to the wall, slightly turn away
 			SetMotorPowers(30, 70);
 		} else {
-			SetMotorPowers(70, 70);
+			SetMotorPowers(70, 70);		//Go straight otherwise
 		}
-		UARTprintf("%d\n", distance2);
-		if(distance2 < 100) {
+
+		if(distance2 < 100) {			//If the front of the robot is close to the wall, make a sharp turn
 			SetMotorPowers(-20, 120);
 			encoder1Limit += 100000;
 			while(encoder1 < encoder1Limit) {
 				GetEncoderCounts(&encoder0, &encoder1);
-				UARTprintf("%d      %d  %d\n", encoder1, encoder1Limit, distance2);
 			}
 		}
 	}

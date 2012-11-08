@@ -24,13 +24,19 @@ long getADCValue(void) {
 	return ADCValue;
 }
 
+long convertAdc(long x){
+	return (((6000*1000) / x) - 6000)/100;
+}
+
+
 void IRSensorDemo(void) {
 	UARTprintf("Press:\nany key-read IR sensor\n");
 	UARTprintf("any key after read begins-quit\n");
 	
 	while(!keyWasPressed()) {
 		unsigned long ADCValue = getADCValue();
-	 	UARTprintf("IR value: %d\r",ADCValue);
+		unsigned long distance = convertAdc(ADCValue);
+	 	UARTprintf("IR value: %d   %d\n",ADCValue, distance);
 	}	
 	UARTprintf("\n");
 }
